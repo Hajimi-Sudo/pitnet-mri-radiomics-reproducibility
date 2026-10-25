@@ -24,6 +24,6 @@
 1. **PitNET Robust Radiomics Atlas**: Categorization of all 107+ IBSI-standard features into:
    - *Tier 1 (Robust)*: ICC ≥ 0.85 across both synthetic shifts and deep-learning segmentation models.
    - *Tier 2 (Moderate)*: 0.70 ≤ ICC < 0.85.
-   - *Tier 3 (Fragile / High-risk)*: ICC < 0.70 (pruned from clinical deployment).
+   - *Tier 3 (Fragile / High-risk)*: ICC < 0.70 (pruned from downstream predictive modeling).
 2. **Stress-Testing curves**: AUC, Brier score, and calibration drift curves of clinical classification models under increasing boundary noise levels (0 mm to 3 mm jitter).
 3. **Open-Science Codebase**: Fully reproducible pipeline with configuration files, feature extraction configs, and statistical scripts.
