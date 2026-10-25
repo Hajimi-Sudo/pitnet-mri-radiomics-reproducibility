@@ -71,3 +71,12 @@ clinical_endpoints:
       target_col: "ki67_high" # 1 = Ki-67 >= 3%, 0 = Ki-67 < 3%
     - name: "knosp_invasion"
       target_col: "knosp_invasive" # 1 = Knosp 3-4, 0 = Knosp 0-2
+stress_testing_classifier:
+  model: "LogisticRegression"
+  penalty: "l1"
+  solver: "saga"
+  C: 0.5
+  max_iter: 2000
+  cv_splits: 5
+  random_state: 42
+  use_nested_cv: false
