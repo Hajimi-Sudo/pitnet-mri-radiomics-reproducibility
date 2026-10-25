@@ -1,0 +1,70 @@
+project:
+  name: "pitnet-mri-radiomics-reproducibility"
+  seed: 42
+
+paths:
+  data_raw_ucl: "data/raw/ucl_sci_data"
+  data_raw_prague: "data/raw/prague_openneuro"
+  data_processed: "data/processed"
+  output_features: "analysis/results/features"
+  output_metrics: "analysis/results/metrics"
+  output_figures: "analysis/figures"
+  output_tables: "analysis/tables"
+
+preprocessing:
+  resample_isotropic: true
+  target_spacing: [1.0, 1.0, 1.0] # mm
+  interpolation: "sitkBSpline" # for image
+  mask_interpolation: "sitkNearestNeighbor"
+  normalize_intensity: true
+  norm_method: "zscore"
+
+perturbations:
+  synthetic:
+    dilations: [1, 2] # voxels
+    erosions: [1, 2]  # voxels
+    elastic:
+      grid_spacing: [15, 15, 15] # mm
+      deformation_magnitude: [1.5, 1.5, 1.5] # mm
+      n_variations: 3
+    rigid_shifts: [1.0] # mm
+  algorithmic_models:
+    - "cerny2025_nnunet"
+    - "damutten2025_nnunet"
+    - "damutten2024_cnn"
+    - "cerny2023_keyframe"
+    - "egger2012_growcut"
+
+pyradiomics:
+  setting:
+    binWidth: 25
+    interpolator: "sitkBSpline"
+    resampledPixelSpacing: [1.0, 1.0, 1.0]
+    voxelArrayShift: 1000
+    correctMask: true
+    geometryTolerance: 1e-4
+  featureClass:
+    shape:
+    firstorder:
+    glcm:
+    glrlm:
+    glszm:
+    gldm:
+    ngtdm:
+  imageType:
+    Original: {}
+    Wavelet: {}
+
+stability_thresholds:
+  tier1_robust: 0.85
+  tier2_moderate: 0.70
+  max_cv: 0.30
+
+clinical_endpoints:
+  tasks:
+    - name: "endocrine_functionality"
+      target_col: "is_functioning" # 1 = Cushing/Acromegaly/PRL, 0 = NFPA
+    - name: "ki67_proliferation"
+      target_col: "ki67_high" # 1 = Ki-67 >= 3%, 0 = Ki-67 < 3%
+    - name: "knosp_invasion"
+      target_col: "knosp_invasive" # 1 = Knosp 3-4, 0 = Knosp 0-2

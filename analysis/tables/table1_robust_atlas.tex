@@ -1,0 +1,31 @@
+\begin{table}[htbp]
+\centering
+\caption{The Certified PitNET Robust Radiomics Atlas: Tier 1 Features Surviving Both Synthetic and Deep-Learning Segmentation Perturbations.}
+\label{tab:robust_atlas}
+\small
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Feature Name} & \textbf{Class} & $\mathbf{ICC_{\text{synth}}}$ & $\mathbf{ICC_{\text{algo}}}$ & $\mathbf{ICC_{\text{overall}}}$ & \textbf{Median CV} \\
+\midrule
+GrayLevelNonUniformityNormalized & GLSZM & \textbf{0.956} & \textbf{0.965} & \textbf{0.948} & 0.270 \\
+GrayLevelNonUniformityNormalized & GLRLM & 0.950 & 0.960 & 0.942 & 0.291 \\
+ShortRunEmphasis & GLRLM & 0.950 & 0.937 & 0.931 & \textbf{0.024} \\
+Uniformity & First-Order & 0.935 & 0.946 & 0.930 & 0.292 \\
+RunLengthNonUniformityNormalized & GLRLM & 0.936 & 0.922 & 0.924 & 0.049 \\
+InverseVariance & GLCM & 0.914 & 0.924 & 0.923 & 0.075 \\
+RunPercentage & GLRLM & 0.932 & 0.925 & 0.922 & 0.027 \\
+Median & First-Order & 0.899 & 0.902 & 0.917 & 0.077 \\
+Id & GLCM & 0.903 & 0.913 & 0.902 & 0.066 \\
+Idm & GLCM & 0.902 & 0.918 & 0.900 & 0.091 \\
+LargeDependenceEmphasis & GLDM & 0.922 & 0.868 & 0.896 & 0.133 \\
+ZoneEntropy & GLSZM & 0.902 & 0.919 & 0.894 & 0.071 \\
+SmallAreaEmphasis & GLSZM & 0.903 & 0.900 & 0.890 & 0.083 \\
+Imc2 & GLCM & 0.888 & 0.912 & 0.881 & 0.103 \\
+JointEntropy & GLCM & 0.863 & 0.901 & 0.868 & 0.106 \\
+SumEntropy & GLCM & 0.855 & 0.881 & 0.862 & 0.113 \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}
+\footnotesize \textit{Note:} Features are ordered by overall intraclass correlation coefficient ($ICC_{\text{overall}}$). $ICC_{\text{synth}}$ evaluates stability across $\pm1$ and $\pm2$ voxel morphological shifts as well as three-dimensional elastic deformation, whereas $ICC_{\text{algo}}$ evaluates stability across five clinical automated deep learning architectures including nnU-Net, 3D CNN ensemble, 2.5D CNN, and GrowCut. Certified Tier 1 features satisfy $ICC_{\text{overall}} \ge 0.85$ alongside dynamic $CV \le 30\%$. Bold values denote the highest stability metrics and the lowest coefficient of variation within the certified cohort.
+\end{flushleft}
+\end{table}

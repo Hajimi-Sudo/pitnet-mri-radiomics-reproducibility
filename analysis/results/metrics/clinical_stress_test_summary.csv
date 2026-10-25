@@ -1,0 +1,9 @@
+perturbation,auc_naive,auc_robust,brier_naive,brier_robust
+baseline_gt,0.968,0.672,0.065,0.232
+dilate_1vox,0.96,0.712,0.117,0.235
+dilate_2vox,0.96,0.728,0.192,0.236
+elastic_s101,0.968,0.62,0.065,0.245
+erode_1vox,0.96,0.608,0.189,0.242
+erode_2vox,0.96,0.6,0.371,0.243
+pred_cerny2025,0.928,0.58,0.142,0.247
+pred_damutten2024,0.916,0.644,0.143,0.236

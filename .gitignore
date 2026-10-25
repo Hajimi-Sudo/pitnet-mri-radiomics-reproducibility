@@ -1,0 +1,25 @@
+# Python cache & virtual environments
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+venv/
+env/
+.env
+
+# Raw medical imaging data (hosted on OpenNeuro and Figshare)
+data/raw/
+data/processed/
+*.nii
+*.nii.gz
+*.dcm
+*.zip
+*.tar.gz
+
+# LaTeX manuscript source and build artifacts
+manuscript/
+
+# Workspace internal configurations
+AGENTS.md
+*.tmp
+.DS_Store
