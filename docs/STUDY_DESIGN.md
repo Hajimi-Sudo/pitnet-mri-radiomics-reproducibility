@@ -35,10 +35,10 @@
                              • Definition of the "PitNET Robust Radiomics Atlas"
                                               │
                                               ▼
-                             [ Clinical Endocrine Downstream Stress-Test ]
-                             • Task A: Functional (GH/ACTH/PRL) vs. NFPA
-                             • Task B: Proliferative Aggressiveness (Ki-67 ≥ 3% vs. < 3%)
-                             • Task C: Knosp invasion / Carotid encasement
+                             [ Downstream Model Stress-Testing Probe ]
+                             • Primary Benchmark: Composite Phenotypic Burden (Volume & Entropy)
+                             • Evaluates AUC stability and Brier score calibration drift
+                             • External Interface: Endocrine functionality, Ki-67, and Knosp
                                               │
                              ┌────────────────┴────────────────┐
                              ▼                                 ▼

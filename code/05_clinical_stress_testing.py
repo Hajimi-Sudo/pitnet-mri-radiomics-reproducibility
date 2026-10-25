@@ -1,16 +1,22 @@
 #!/usr/bin/env python3
 """
-Clinical Stress-Testing Engine: Downstream Endocrine & Proliferation Tasks.
-Quantifies the exact diagnostic penalty of feature instability when models face boundary noise.
+Clinical Stress-Testing Engine: Downstream Model Robustness & Probability Calibration Audit.
+Quantifies the diagnostic and calibration penalty of radiomic feature instability under spatial boundary uncertainty.
 
-Tasks:
-1. Endocrine Functionality: Functioning (GH/ACTH/PRL) vs. Non-Functioning (NFPA)
-2. Proliferative Aggressiveness: Ki-67 >= 3% vs. < 3%
-3. Cavernous Sinus Invasion: Knosp Grade 3-4 vs. 0-2
+Primary Benchmark Task (Prague OpenNeuro ds006248 cohort, N=50):
+- Operational Composite Phenotypic Target: High vs. Low composite tumor burden & structural complexity
+  (stratified by joint median tumor volume and first-order entropy).
+  This serves strictly as a simulation sensitivity probe to benchmark probability calibration drift
+  (Brier score explosion) and discriminative stability (AUC) under spatial delineation noise.
 
-Compares:
-- Pipeline A (Naive): All-feature extraction -> L1-penalized feature selection -> Classifier
-- Pipeline B (Robust-Pruned): Stability gate (Tier 1 ICC >= 0.85) -> L1 selection -> Classifier
+External Clinical Tasks Interface (for prospective multi-center cohorts, e.g., UCL Sci Data 2025, N=136):
+- Endocrine Functionality (GH/ACTH/PRL vs. NFPA)
+- Proliferative Aggressiveness (Ki-67 >= 3% vs. < 3%)
+- Cavernous Sinus Invasion (Knosp Grade 3-4 vs. 0-2)
+
+Pipelines Compared:
+- Pipeline A (Naive): All 107 IBSI features -> L1-penalized LASSO selection -> Logistic Classifier
+- Pipeline B (Robust-Pruned): Tier 1 Robust Features (ICC >= 0.85, CV <= 30%) -> L1 selection -> Logistic Classifier
 """
 
 import os

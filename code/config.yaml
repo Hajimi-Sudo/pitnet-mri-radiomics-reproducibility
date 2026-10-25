@@ -61,7 +61,10 @@ stability_thresholds:
   max_cv: 0.30
 
 clinical_endpoints:
-  tasks:
+  primary_benchmark:
+    name: "phenotypic_burden_probe"
+    target_col: "composite_phenotype" # High vs Low tumor burden & entropy for calibration stress testing
+  external_cohort_tasks: # Supported interfaces for datasets with histopathological metadata (e.g., UCL N=136)
     - name: "endocrine_functionality"
       target_col: "is_functioning" # 1 = Cushing/Acromegaly/PRL, 0 = NFPA
     - name: "ki67_proliferation"

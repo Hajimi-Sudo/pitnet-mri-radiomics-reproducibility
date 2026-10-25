@@ -25,6 +25,10 @@ Key contributions:
 | **Prague Cohort** | N=50 | 3T multiparametric (CE-T1, T1, T2, FIESTA, ADC) | Expert ground truth + 5 automated benchmark models (nnU-Net full, nnU-Net rep, 3D CNN ensemble, 2.5D CNN, GrowCut) | Sellar anatomical boundaries, benchmark segmentation metrics | OpenNeuro `ds006248` |
 | **UCL Cohort** | N=136 | Isovolumetric CE-T1 (+ T2 subset) | Expert tumor & internal carotid artery contours | Presentation (NFPA, Cushing, Acromegaly, Prolactinoma), Ki-67 index, Knosp invasion | Figshare (`10.6084/m9.figshare.27894084`) |
 
+> **Note on Study Scope and Clinical Endpoints**:
+> - **Primary Benchmark (Prague Cohort, $N=50$)**: This investigation uses the Prague OpenNeuro dataset because it uniquely provides expert consensus ground-truth delineations alongside five distinct pre-computed automated deep-learning models (nnU-Nets, 3D CNNs, 2.5D CNNs, GrowCut). Downstream machine learning stress testing uses an objective composite phenotypic burden target (median volume and entropy) strictly as an operational sensitivity probe to measure probability calibration collapse (Brier score surge) under spatial boundary noise.
+> - **Prospective Clinical Translation (UCL Cohort, $N=136$)**: Cohort pipelines and endpoint interfaces for Ki-67 proliferation, Knosp invasion, and hormone hypersecretion are provided in `code/` to support future multi-center validation applying the certified 16-feature Robust Atlas to true clinical endpoints.
+
 ---
 
 ## Directory Layout

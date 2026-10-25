@@ -7,8 +7,8 @@ This repository provides an open-source, reproducible computational pipeline for
 The pipeline consists of modular Python components adhering to the Image Biomarker Standardisation Initiative (IBSI):
 
 1. **`01_dataset_loader.py`**:
-   - Parses OpenNeuro BIDS (`ds006248`) and UCL multi-parametric MRI cohorts.
-   - Harmonizes clinical endpoints: secretory lineage, proliferative status (Ki-67 labeling index), and cavernous sinus invasion (Knosp grade).
+   - Parses OpenNeuro BIDS (`ds006248`, N=50) benchmark multi-sequence MRI and automated deep learning segmentations.
+   - Provides standardized harmonization interfaces for primary composite phenotypic burden (volume & entropy) and prospective external clinical endpoints (secretory lineage, Ki-67 index, Knosp invasion).
 
 2. **`02_perturbation_engine.py`**:
    - Implements controlled 3D morphological shifts ($\pm1$ and $\pm2$ voxel dilation/erosion).
@@ -24,7 +24,8 @@ The pipeline consists of modular Python components adhering to the Image Biomark
 
 5. **`05_clinical_stress_testing.py`**:
    - Evaluates downstream predictive models under boundary noise via nested 5-fold cross-validation.
-   - Compares the performance and calibration drift (AUC, Brier score loss) of unpruned naive pipelines versus stability-gated robust pipelines.
+   - Measures probability calibration degradation (Brier score loss surge) and AUC stability under spatial boundary noise on the composite phenotypic burden probe.
+   - Compares naive unpruned pipelines (all 107 IBSI features) versus certified robust pipelines (Tier 1 features, ICC >= 0.85).
 
 6. **`06_generate_figures_and_tables.py`**:
    - Generates publication-ready LaTeX tables (`table1_robust_atlas.tex`, `table2_stress_test.tex`, `table3_ablation.tex`) and visual artifacts from audit metrics.

@@ -2,7 +2,7 @@
 
 ## 1. Executive Summary
 
-- **Title**: Robustness and Reproducibility of MRI Radiomic Features in Pituitary Neuroendocrine Tumors: Impact of Multi-Model Segmentation Uncertainty on Endocrine Subtype and Proliferation Profiling
+- **Title**: Reproducibility of MRI Radiomic Features in Pituitary Neuroendocrine Tumors: The Impact of Segmentation Perturbation and Imaging Sequence Variation
 - **Clinical Motivation**: Pituitary neuroendocrine tumors (PitNETs) require accurate pre-operative characterization of functional subtype (NFPA vs. hormone-secreting), invasiveness (Knosp grade / carotid encroachment), and proliferative activity (Ki-67). While radiomics studies claim high predictive AUCs, they rarely report feature robustness against inter-observer contour variations or automated segmentation shifts. This work systematically interrogates the stability of PitNET radiomics across synthetic and deep-learning segmentation perturbations, maps a certified "Robust Radiomics Atlas," and demonstrates the dramatic clinical penalty of deploying unvetted, fragile features.
 
 ## 2. Core Research Questions
@@ -10,7 +10,7 @@
 1. **Feature Vulnerability**: How many conventional and high-order MRI radiomic features remain stable (ICC > 0.85, CCC > 0.85) when subjected to subtle boundary shifts (±1–2 mm erosion/dilation and boundary jitter) in PitNETs?
 2. **Algorithmic Discrepancy**: When modern deep learning architectures (e.g., nnU-Net, CNN ensemble) segment PitNETs compared to expert human delineations, which feature families (shape, first-order, GLCM, GLRLM, GLSZM, wavelet) exhibit severe drift?
 3. **Sequence Dependency**: How does feature stability contrast between contrast-enhanced T1-weighted (CE-T1) and T2-weighted MRI?
-4. **Clinical Downstream Consequence (The Killer Experiment)**: When predicting endocrine subtypes (NFPA vs. hormone-active) and high proliferation (Ki-67 ≥ 3%), how severely do models trained on unpruned/fragile features degrade under boundary uncertainty compared to models restricted to validated robust features?
+4. **Downstream Stress-Testing Consequence**: In downstream machine learning models, how severely do models trained on unpruned/fragile features suffer probability calibration collapse (Brier score surge) under boundary uncertainty compared to models restricted to validated robust Tier 1 features?
 
 ## 3. Cohort Overview
 

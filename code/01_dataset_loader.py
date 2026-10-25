@@ -79,10 +79,15 @@ def audit_prague_cohort(data_dir):
 
 def harmonize_clinical_endpoints(metadata_df):
     """
-    Derives standardized binary clinical endpoints for downstream stress-testing:
-    1. is_functioning: 1 if Acromegaly/Cushing/Prolactinoma, 0 if NFPA
-    2. ki67_high: 1 if Ki-67 >= 3.0%, 0 if Ki-67 < 3.0%
-    3. knosp_invasive: 1 if Knosp >= 3, 0 if Knosp 0-2
+    Harmonizes clinical and phenotypic endpoints:
+    - Primary Benchmark Cohort (OpenNeuro ds006248, N=50 non-functioning PitNETs):
+      Derives the operational composite phenotypic target (median tumor burden and entropy)
+      serving as a sensitivity probe for downstream calibration stress testing.
+    - External Clinical Datasets Interface (e.g. UCL Figshare cohort, N=136):
+      Standardizes clinical endpoints when available:
+      1. is_functioning: 1 if Acromegaly/Cushing/Prolactinoma, 0 if NFPA
+      2. ki67_high: 1 if Ki-67 >= 3.0%, 0 if Ki-67 < 3.0%
+      3. knosp_invasive: 1 if Knosp >= 3, 0 if Knosp 0-2
     """
     df = metadata_df.copy()
     if "phenotype" in df.columns:

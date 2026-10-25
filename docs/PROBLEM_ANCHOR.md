@@ -42,4 +42,4 @@ When higher-order texture filters (e.g., Wavelet high-pass, Co-occurrence Matrix
 
 1. **First Comprehensive Perturbation Audit in PitNETs**: Quantifying both synthetic geometric shifts (erosion/dilation/elastic deformation) and actual deep-learning segmentation model discrepancies (5 models).
 2. **Identification of the "PitNET Robust Radiomics Atlas"**: Establishing a public reference list of IBSI features that neuroendocrine researchers can safely rely on.
-3. **The Clinical Stress-Test Experiment**: Quantifying the exact penalty of feature fragility on endocrine subtype and Ki-67 classification, proving that robustness-guided feature pre-filtering prevents model collapse in clinical validation.
+3. **The Downstream Model Stress-Test Experiment**: Quantifying the exact penalty of feature fragility on downstream probability calibration (Brier score explosion) and discriminative stability, proving that robustness-guided feature pre-filtering prevents model calibration collapse under real-world segmentation uncertainty.
