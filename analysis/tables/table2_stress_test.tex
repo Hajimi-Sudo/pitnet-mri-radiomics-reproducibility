@@ -1,6 +1,6 @@
 \begin{table}[htbp]
 \centering
-\caption{Downstream Diagnostic Stress Testing: Naive Unpruned vs. Robust-Pruned Pipeline Performance under Delineation Uncertainty.}
+\caption{Downstream Classifier Stress Testing: Naive Unpruned vs. Robust-Pruned Pipeline Performance under Delineation Uncertainty.}
 \label{tab:stress_test}
 \small
 \begin{tabular}{lcccc}
@@ -13,11 +13,11 @@ Baseline Ground Truth & 0.968 & 0.672 & \textbf{0.065} & 0.232 \\
 Elastic B-Spline Jitter & 0.968 & 0.620 & \textbf{0.065} & 0.245 \\
 -1 Voxel Erosion & 0.960 & 0.608 & \textbf{0.189} & 0.242 \\
 -2 Voxels Erosion & 0.960 & 0.600 & 0.371 & \textbf{0.243} \\
-Pred Cerny2025 & 0.928 & 0.580 & \textbf{0.142} & 0.247 \\
-Pred Damutten2024 & 0.916 & 0.644 & \textbf{0.143} & 0.236 \\
+Automated nnU-Net (2025) & 0.928 & 0.580 & \textbf{0.142} & 0.247 \\
+Automated 3D CNN Ensemble & 0.916 & 0.644 & \textbf{0.143} & 0.236 \\
 \bottomrule
 \end{tabular}
 \begin{flushleft}
-\footnotesize \textit{Note:} Models were trained exclusively on baseline ground truth expert segmentations and evaluated on perturbed and automated delineations during inference. The naive pipeline utilizes all 107 IBSI features, exhibiting severe probability calibration inflation with a $+470.8\%$ Brier error increase under $-2$ voxels erosion. The robust pipeline restricts inputs to certified Tier 1 markers, demonstrating invariant probability calibration with less than $6.5\%$ maximum variation across all tested delineation regimes. Bold values indicate the superior (lower) probability calibration error (Brier score) under each perturbation condition.
+\footnotesize \textit{Note:} Downstream models were trained exclusively on baseline ground truth expert segmentations to classify composite phenotypic burden (volume and entropy) and evaluated on perturbed and automated delineations during inference. Reported AUC metrics represent 5-fold cross-validation fold-average values ($\frac{1}{K}\sum_{k=1}^K \text{AUC}_k = 0.968$ for the baseline naive model, with individual fold AUCs of 1.000, 1.000, 1.000, 1.000, and 0.840; the corresponding cohort-wide pooled out-of-fold AUC across all 50 concatenated predictions is 0.986, as reported in Table~\ref{tab:ablation}). The baseline Brier score is identical at 0.065 across both calculation schemes due to linear expectation. The naive pipeline utilizes all 107 IBSI features, exhibiting severe probability calibration inflation with a $+470.8\%$ Brier error increase under $-2$ voxels erosion. The robust pipeline restricts inputs to the 16 certified Tier 1 markers, demonstrating invariant probability calibration with less than $6.5\%$ maximum variation across all tested delineation regimes. Bold values indicate the superior (lower) probability calibration error (Brier score) under each perturbation condition.
 \end{flushleft}
 \end{table}
